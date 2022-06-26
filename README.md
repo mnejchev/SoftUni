@@ -1,3 +1,3 @@
 # SoftUni
 Homeworks from SoftUni courses.
-I added some changes 
+I added some changes.
