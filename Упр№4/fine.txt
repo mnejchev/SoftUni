@@ -1,0 +1,20 @@
+open_tabs = int(input())
+wage = float(input())
+fine = 0
+sum = 0
+for n in range(open_tabs):
+    site = input()
+    if site == "Facebook":
+        fine = 150
+        sum += fine
+    elif site == "Instagram":
+        fine = 100
+        sum += fine
+    elif site == "Reddit":
+        fine = 50
+        sum += fine
+    if sum >= wage:
+        print("You have lost your salary.")
+        break
+if sum < wage:
+    print(int(abs(sum - wage)))
