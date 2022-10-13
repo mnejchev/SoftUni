@@ -1,0 +1,142 @@
+import tkinter as tk
+
+
+# this file only creates the environment!
+
+# Creating a root
+def create_root():
+    root = tk.Tk()
+    root.geometry("700x600")
+    root.title("My Learning Experience With Tkinter")
+
+    return root
+
+
+def create_label():
+    label = tk.Label(
+        root,
+        text="Learn GUI with tkinter!",
+        font=("Copperplate Gothic Bold", 20),
+        fg="#800000"
+    )
+    label.pack()  # "pack(padx=,pady=)" and "grid(row=, column=)" are the main ways of positioning
+
+# Creating a frame in which we can add buttons, entries, pictures, etc
+def create_frame():
+    frame = tk.Canvas(root, width=700, height=700, bg="#FFD700")
+    frame.pack()
+    return frame
+
+
+root = create_root()
+label = create_label()
+frame = create_frame()
+
+from texts_and_blocks import *
+from canvas import root
+# A cycle to run the program until we press "X"
+if __name__ == "__main__":
+    frame_texts()  # adds homepage texts
+    type_fields()  # adds homepage typing fields
+    buttons()  # adds homepage buttons
+    root.mainloop()
+
+from canvas import *
+
+
+def frame_texts():
+    frame.create_text(
+        10, 30,
+        anchor="w",
+        text="Leave your comment here:",
+        font=("Copperplate Gothic Bold", 15)
+    )
+    frame.create_text(
+        180, 152,
+        anchor="n",
+        text="Username:",
+        font=("Arial Rounded MT Bold", 10)
+    )
+    frame.create_text(
+        180, 192,
+        anchor="n",
+        text="Password:",
+        font=("Arial Rounded MT Bold", 10)
+    )
+
+
+# Creating a text window in which we can type MULTIPLE LINES:
+def type_fields():
+    text = tk.Text(
+        root,
+        font=("Arial Rounded MT Bold", 15),
+        width=56,  # as a % of the whole window width
+        height=4,  # as a % of the whole window height
+        bd=2,  # boundary size
+        bg="#C0C0C0",  # background window color
+        fg="#800000"  # text color
+    )
+    text.pack()
+    frame.create_window(
+        10, 90,
+        window=text,
+        anchor="w"  # specifies the sides of which we give the distances(w=west)
+    )
+    # Creating a text window in which we can type SINGLE line usually used for usernames and passwords:
+    username_box = tk.Entry(
+        root,
+        width=30,
+        font=("Arial", 10),
+        bd=2,
+        bg="indigo",
+        fg="#00FF00"
+    )
+    frame.create_window(
+        350, 150,
+        window=username_box,
+        anchor="n"
+    )
+    password_box = tk.Entry(
+        root,
+        width=30,
+        font=("Arial", 10),
+        bd=2,
+        bg="indigo",
+        fg="#00FF00"
+    )
+    frame.create_window(
+        350, 190,
+        window=password_box,
+        anchor="n"
+    )
+
+
+def buttons():
+    login_button = tk.Button(
+        root,
+        text="Login",
+        font=("Arial Rounded MT Bold", 10),
+        bg="#FF8C00",
+        fg="#191970",
+        bd=5,
+        width=10,
+    )
+    frame.create_window(
+        290, 220,
+        window=login_button,
+        anchor="n"
+    )
+    register_button = tk.Button(
+        root,
+        text="Register",
+        font=("Arial Rounded MT Bold", 10),
+        bg="#FF8C00",
+        fg="#191970",
+        bd=5,
+        width=10,
+    )
+    frame.create_window(
+        410, 220,
+        window=register_button,
+        anchor="n"
+    )
